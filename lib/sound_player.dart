@@ -27,4 +27,6 @@ class SoundPlayer {
 
   // Остановить в любой момент
   Future<void> stop() async => await _player.stop();
+
+  Future<void> dispose() async => await _player.dispose();
 }

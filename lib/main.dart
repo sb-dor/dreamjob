@@ -1,22 +1,57 @@
 import 'dart:math';
+import 'package:dreamjob/game_level_controller.dart';
 import 'package:dreamjob/sound_player.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
 void main() {
-  runApp(const RetroTVGameApp());
+  runApp(const DreamJob());
 }
 
-class RetroTVGameApp extends StatelessWidget {
-  const RetroTVGameApp({super.key});
+class GameScope extends InheritedWidget {
+  const GameScope({super.key, required this.state, required super.child});
+
+  static DreamJobState of(BuildContext context) {
+    final widget = context.getElementForInheritedWidgetOfExactType<GameScope>()?.widget;
+    assert(widget != null, "GameScope was not found in element tree");
+    assert(widget is GameScope, "GameScope was not found in element tree");
+    return (widget as GameScope).state;
+  }
+
+  final DreamJobState state;
+
+  @override
+  bool updateShouldNotify(GameScope old) {
+    return false;
+  }
+}
+
+class DreamJob extends StatefulWidget {
+  const DreamJob({super.key});
+
+  @override
+  State<DreamJob> createState() => DreamJobState();
+}
+
+class DreamJobState extends State<DreamJob> {
+  final GameLevelController gameLevelController = GameLevelController();
+
+  @override
+  void initState() {
+    super.initState();
+    gameLevelController.initializeController();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Dreamjob',
-      theme: ThemeData.dark(),
-      home: const RetroTVScreen(),
-      debugShowCheckedModeBanner: false,
+    return GameScope(
+      state: this,
+      child: MaterialApp(
+        title: 'Dreamjob',
+        theme: ThemeData.dark(),
+        home: const RetroTVScreen(),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
@@ -29,21 +64,14 @@ class RetroTVScreen extends StatefulWidget {
 }
 
 class _RetroTVScreenState extends State<RetroTVScreen> with TickerProviderStateMixin {
-  late AnimationController _scanlineController;
-  late AnimationController _textController;
-  late AnimationController _vhsController; // ← новый контроллер для VHS
+  late final AnimationController _scanlineController;
+  late final AnimationController _textController;
+  late final AnimationController _vhsController;
+  late final GameLevelController _gameLevelController;
   late final SoundPlayer _soundPlayer;
-  late final SoundPlayer _casseteEngagement;
 
   String currentText = '';
   bool showContinueButton = false;
-
-  final List<String> gameTexts = [
-    'ДАЛЬШЕ ВОПРОСЫ БУДЕТ\nЗАДАВАТЬ ТЕЛЕФОННЫЙРОБОТ',
-    'ВНИМАНИЕ!НАЧИНАЕМ ТРАНСЛЯЦИЮ',
-    'СИСТЕМА ЗАГРУЖАЕТСЯ...',
-    'СВЯЗЬ УСТАНОВЛЕНА',
-  ];
 
   int currentTextIndex = 0;
 
@@ -55,30 +83,16 @@ class _RetroTVScreenState extends State<RetroTVScreen> with TickerProviderStateM
       ..repeat();
     _textController = AnimationController(vsync: this, duration: const Duration(seconds: 3));
     _vhsController = AnimationController(vsync: this, duration: const Duration(seconds: 6))
-      ..repeat(); // VHS-шум
+      ..repeat();
+    _gameLevelController = GameScope.of(context).gameLevelController;
 
-    _showNextText();
     _initSounds();
   }
 
   void _initSounds() async {
     _soundPlayer = SoundPlayer('assets/sounds/vhs-noise.mp3');
-    _casseteEngagement = SoundPlayer('assets/sounds/cassette_engagement.mp3');
     await _soundPlayer.init();
-    await _casseteEngagement.init();
-    _soundPlayer.playLoop();
-  }
-
-  void _showNextText() {
-    setState(() {
-      currentText = gameTexts[currentTextIndex];
-      showContinueButton = true;
-    });
-    _textController.forward(from: 0);
-  }
-
-  void _onContinue() {
-    _casseteEngagement.play();
+    await _soundPlayer.playLoop();
   }
 
   @override
@@ -117,55 +131,15 @@ class _RetroTVScreenState extends State<RetroTVScreen> with TickerProviderStateM
                 ),
                 size: Size.infinite,
               ),
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FadeTransition(
-                      opacity: _textController,
-                      child: Padding(
-                        padding: const EdgeInsets.all(32.0),
-                        child: Text(
-                          currentText,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: 'Courier',
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white.withOpacity(0.95),
-                            shadows: const [
-                              Shadow(color: Colors.cyan, offset: Offset(-3, 0), blurRadius: 10),
-                              Shadow(color: Colors.red, offset: Offset(3, 0), blurRadius: 10),
-                            ],
-                            letterSpacing: 3,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 60),
-                    if (showContinueButton)
-                      GestureDetector(
-                        onTap: _onContinue,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 18),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white70, width: 3),
-                            boxShadow: const [BoxShadow(color: Colors.white30, blurRadius: 20)],
-                          ),
-                          child: const Text(
-                            'ПРОДОЛЖИТЬ',
-                            style: TextStyle(
-                              fontFamily: 'Courier',
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              letterSpacing: 4,
-                            ),
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
+
+              ListenableBuilder(
+                listenable: _gameLevelController,
+                builder: (context, child) {
+                  if(_gameLevelController.controllerInitialized) {
+                    return _gameLevelController.currentLevel;
+                  }
+                  return SizedBox.shrink();
+                },
               ),
             ],
           );
@@ -208,7 +182,7 @@ class ScanlinePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // обычные скан-линии
     final darkPaint = Paint()
-      ..color = Colors.black.withOpacity(0.7)
+      ..color = Colors.black.withValues(alpha: 0.7)
       ..strokeWidth = 1;
 
     for (double i = 0; i < size.height; i += 3) {
@@ -218,11 +192,11 @@ class ScanlinePainter extends CustomPainter {
     // если линии нет — выходим
     if (posY == null) return;
 
-    final y = posY! * size.height;
+    // final y = posY! * size.height;
 
     // яркая бегущая линия
     // final flashPaint = Paint()
-    //   ..color = Colors.white.withOpacity(alpha)
+    //   ..color = Colors.white.withValues(alpha: alpha)
     //   ..strokeWidth = thickness;
     //
     // canvas.drawLine(
@@ -279,14 +253,20 @@ class VHSOverlayPainter extends CustomPainter {
       final thickness = 2 + rnd.nextDouble() * 8;
       canvas.drawRect(
         Rect.fromLTWH(0, y, w, thickness),
-        Paint()..color = Colors.white.withOpacity(0.15 + rnd.nextDouble() * 0.2),
+        Paint()..color = Colors.white.withValues(alpha: 0.15 + rnd.nextDouble() * 0.2),
       );
     }
 
     // 3. Цветовые искажения (chromatic aberration) + размытие
     canvas.saveLayer(Rect.fromLTWH(0, 0, w, h), Paint());
-    canvas.drawRect(Rect.fromLTWH(-6, 0, w, h), Paint()..color = Colors.red.withOpacity(0.07));
-    canvas.drawRect(Rect.fromLTWH(6, 0, w, h), Paint()..color = Colors.cyan.withOpacity(0.07));
+    canvas.drawRect(
+      Rect.fromLTWH(-6, 0, w, h),
+      Paint()..color = Colors.red.withValues(alpha: 0.07),
+    );
+    canvas.drawRect(
+      Rect.fromLTWH(6, 0, w, h),
+      Paint()..color = Colors.cyan.withValues(alpha: 0.07),
+    );
     canvas.restore();
 
     // 4. Плёночный шум
@@ -294,12 +274,16 @@ class VHSOverlayPainter extends CustomPainter {
       final x = rnd.nextDouble() * w;
       final y = rnd.nextDouble() * h;
       final opacity = rnd.nextDouble() * 0.06;
-      canvas.drawCircle(Offset(x, y), 0.8, Paint()..color = Colors.white.withOpacity(opacity));
+      canvas.drawCircle(
+        Offset(x, y),
+        0.8,
+        Paint()..color = Colors.white.withValues(alpha: opacity),
+      );
     }
 
     // 5. Лёгкое общее размытие и цветовой сдвиг (как на старой кассете)
     final blurPaint = Paint()
-      ..color = Colors.white.withOpacity(0.03)
+      ..color = Colors.white.withValues(alpha: 0.03)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 1.2);
     canvas.drawRect(Rect.fromLTWH(0, 0, w, h), blurPaint);
 
@@ -309,7 +293,7 @@ class VHSOverlayPainter extends CustomPainter {
       canvas.drawRect(
         Rect.fromLTWH(0, y - 40, w, 80),
         Paint()
-          ..color = Colors.white.withOpacity(0.3)
+          ..color = Colors.white.withValues(alpha: 0.3)
           ..blendMode = BlendMode.plus,
       );
     }
