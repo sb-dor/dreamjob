@@ -33,6 +33,7 @@ class _RetroTVScreenState extends State<RetroTVScreen> with TickerProviderStateM
   late AnimationController _textController;
   late AnimationController _vhsController; // ← новый контроллер для VHS
   late final SoundPlayer _soundPlayer;
+  late final SoundPlayer _casseteEngagement;
 
   String currentText = '';
   bool showContinueButton = false;
@@ -57,8 +58,15 @@ class _RetroTVScreenState extends State<RetroTVScreen> with TickerProviderStateM
       ..repeat(); // VHS-шум
 
     _showNextText();
+    _initSounds();
+  }
 
-    _soundPlayer = SoundPlayer()..playLoop();
+  void _initSounds() async {
+    _soundPlayer = SoundPlayer('assets/sounds/vhs-noise.mp3');
+    _casseteEngagement = SoundPlayer('assets/sounds/cassette_engagement.mp3');
+    await _soundPlayer.init();
+    await _casseteEngagement.init();
+    _soundPlayer.playLoop();
   }
 
   void _showNextText() {
@@ -70,13 +78,7 @@ class _RetroTVScreenState extends State<RetroTVScreen> with TickerProviderStateM
   }
 
   void _onContinue() {
-    if (currentTextIndex < gameTexts.length - 1) {
-      setState(() {
-        currentTextIndex++;
-        showContinueButton = false;
-      });
-      Future.delayed(const Duration(milliseconds: 300), _showNextText);
-    }
+    _casseteEngagement.play();
   }
 
   @override
@@ -97,62 +99,8 @@ class _RetroTVScreenState extends State<RetroTVScreen> with TickerProviderStateM
           return Stack(
             children: [
               // Основной контент (фон + текст + кнопка)
-              Stack(
-                children: [
-                  Positioned.fill(
-                    child: Image.asset('assets/images/background.png', fit: BoxFit.cover),
-                  ),
-                  Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FadeTransition(
-                          opacity: _textController,
-                          child: Padding(
-                            padding: const EdgeInsets.all(32.0),
-                            child: Text(
-                              currentText,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'Courier',
-                                fontSize: 32,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white.withOpacity(0.95),
-                                shadows: const [
-                                  Shadow(color: Colors.cyan, offset: Offset(-3, 0), blurRadius: 10),
-                                  Shadow(color: Colors.red, offset: Offset(3, 0), blurRadius: 10),
-                                ],
-                                letterSpacing: 3,
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 60),
-                        if (showContinueButton)
-                          GestureDetector(
-                            onTap: _onContinue,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 18),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.white70, width: 3),
-                                boxShadow: const [BoxShadow(color: Colors.white30, blurRadius: 20)],
-                              ),
-                              child: const Text(
-                                'ПРОДОЛЖИТЬ',
-                                style: TextStyle(
-                                  fontFamily: 'Courier',
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  letterSpacing: 4,
-                                ),
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
-                ],
+              Positioned.fill(
+                child: Image.asset('assets/images/background.png', fit: BoxFit.cover),
               ),
 
               // Твой старый скан-линии
@@ -168,6 +116,56 @@ class _RetroTVScreenState extends State<RetroTVScreen> with TickerProviderStateM
                   scanlineTime: _scanlineController.value,
                 ),
                 size: Size.infinite,
+              ),
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FadeTransition(
+                      opacity: _textController,
+                      child: Padding(
+                        padding: const EdgeInsets.all(32.0),
+                        child: Text(
+                          currentText,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: 'Courier',
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white.withOpacity(0.95),
+                            shadows: const [
+                              Shadow(color: Colors.cyan, offset: Offset(-3, 0), blurRadius: 10),
+                              Shadow(color: Colors.red, offset: Offset(3, 0), blurRadius: 10),
+                            ],
+                            letterSpacing: 3,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 60),
+                    if (showContinueButton)
+                      GestureDetector(
+                        onTap: _onContinue,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 18),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white70, width: 3),
+                            boxShadow: const [BoxShadow(color: Colors.white30, blurRadius: 20)],
+                          ),
+                          child: const Text(
+                            'ПРОДОЛЖИТЬ',
+                            style: TextStyle(
+                              fontFamily: 'Courier',
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              letterSpacing: 4,
+                            ),
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
               ),
             ],
           );
