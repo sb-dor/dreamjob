@@ -36,13 +36,7 @@ class _Level11State extends State<Level11> {
               ),
             ),
           ),
-          const SizedBox(height: 100),
-          Icon(
-            Icons.check_circle,
-            size: 100,
-            color: Colors.green,
-          ),
-          const SizedBox(height: 100),
+          const SizedBox(height: 200),
           GestureDetector(
             onTap: () {
               // Reset the game or return to main menu
