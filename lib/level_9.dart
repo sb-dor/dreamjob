@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'game_level_controller.dart';
 import 'main.dart';
 
-class Level6 extends StatefulWidget {
-  const Level6({super.key});
+class Level9 extends StatefulWidget {
+  const Level9({super.key});
 
   @override
-  State<Level6> createState() => _Level6State();
+  State<Level9> createState() => _Level9State();
 }
 
-class _Level6State extends State<Level6> {
+class _Level9State extends State<Level9> {
   late final GameLevelController _gameLevelController = GameScope.of(context).gameLevelController;
 
   @override
@@ -27,9 +27,9 @@ class _Level6State extends State<Level6> {
               padding: const EdgeInsets.all(32.0),
               child: Column(
                 children: [
-                  TextWidget(label: "ВОПРОС 1/5", size: 30),
+                  TextWidget(label: "ВОПРОС 4/5", size: 30),
                   const SizedBox(height: 50),
-                  TextWidget(label: "1 . . 2 . . 3 . . 4 . . ?", size: 25),
+                  TextWidget(label: "ЕСЛИ ЗАВТРА БУДЕТ ПОСЛЕ ВЧЕРА, ТО СЕГОДНЯШНИЙ ДЕНЬ - ЭТО:", size: 20),
                 ],
               ),
             ),
@@ -49,7 +49,7 @@ class _Level6State extends State<Level6> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '1', size: 17),
+                    child: TextWidget(label: 'ПОНЕДЕЛЬНИК', size: 17),
                   ),
                 ),
                 GestureDetector(
@@ -60,7 +60,7 @@ class _Level6State extends State<Level6> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '10', size: 17),
+                    child: TextWidget(label: 'ВТОРНИК', size: 17),
                   ),
                 ),
               ],
@@ -75,24 +75,24 @@ class _Level6State extends State<Level6> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    _gameLevelController.addToScore(-1); // Wrong answer
-                    _gameLevelController.nextLevel();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '15', size: 17),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
                     _gameLevelController.addToScore(2); // Correct answer
                     _gameLevelController.nextLevel();
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '5', size: 17),
+                    child: TextWidget(label: 'СЕРЕДИНА НЕДЕЛИ', size: 17),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    _gameLevelController.addToScore(-1); // Wrong answer
+                    _gameLevelController.nextLevel();
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    decoration: BoxDecoration(color: Colors.transparent),
+                    child: TextWidget(label: 'ПЯТНИЦА', size: 17),
                   ),
                 ),
               ],

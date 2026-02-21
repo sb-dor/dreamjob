@@ -1,0 +1,61 @@
+import 'package:dreamjob/text_widget.dart';
+import 'package:flutter/material.dart';
+
+import 'game_level_controller.dart';
+import 'main.dart';
+
+class Level11 extends StatefulWidget {
+  const Level11({super.key});
+
+  @override
+  State<Level11> createState() => _Level11State();
+}
+
+class _Level11State extends State<Level11> {
+ late final GameLevelController _gameLevelController = GameScope.of(context).gameLevelController;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox.expand(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width / 1.5,
+            child: Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: Column(
+                children: [
+                  TextWidget(label: "ПОЗДРАВЛЯЕМ!", size: 40),
+                  const SizedBox(height: 50),
+                  TextWidget(label: "ВЫ ПРОШЛИ ТЕСТИРОВАНИЕ КОМПАНИИ МЕЧТЫ", size: 25),
+                  const SizedBox(height: 50),
+                  TextWidget(label: "НАЖМИТЕ НА ЭКРАН, ЧТОБЫ ЗАВЕРШИТЬ ИГРУ", size: 20),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 100),
+          Icon(
+            Icons.check_circle,
+            size: 100,
+            color: Colors.green,
+          ),
+          const SizedBox(height: 100),
+          GestureDetector(
+            onTap: () {
+              // Reset the game or return to main menu
+              _gameLevelController.resetScore();
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              decoration: BoxDecoration(color: Colors.transparent),
+              child: TextWidget(label: 'ЗАВЕРШИТЬ ИГРУ', size: 17),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

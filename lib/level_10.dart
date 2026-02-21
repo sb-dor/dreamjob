@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'game_level_controller.dart';
 import 'main.dart';
 
-class Level6 extends StatefulWidget {
-  const Level6({super.key});
+class Level10 extends StatefulWidget {
+  const Level10({super.key});
 
   @override
-  State<Level6> createState() => _Level6State();
+  State<Level10> createState() => _Level10State();
 }
 
-class _Level6State extends State<Level6> {
+class _Level10State extends State<Level10> {
   late final GameLevelController _gameLevelController = GameScope.of(context).gameLevelController;
 
   @override
@@ -27,9 +27,9 @@ class _Level6State extends State<Level6> {
               padding: const EdgeInsets.all(32.0),
               child: Column(
                 children: [
-                  TextWidget(label: "ВОПРОС 1/5", size: 30),
+                  TextWidget(label: "ВОПРОС 5/5", size: 30),
                   const SizedBox(height: 50),
-                  TextWidget(label: "1 . . 2 . . 3 . . 4 . . ?", size: 25),
+                  TextWidget(label: "СКОЛЬКО МЕСЯЦЕВ В ГОДУ ИМЕЮТ 28 ДНЕЙ?", size: 20),
                 ],
               ),
             ),
@@ -60,7 +60,7 @@ class _Level6State extends State<Level6> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '10', size: 17),
+                    child: TextWidget(label: '6', size: 17),
                   ),
                 ),
               ],
@@ -81,7 +81,7 @@ class _Level6State extends State<Level6> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '15', size: 17),
+                    child: TextWidget(label: '12', size: 17),
                   ),
                 ),
                 GestureDetector(
@@ -92,7 +92,7 @@ class _Level6State extends State<Level6> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '5', size: 17),
+                    child: TextWidget(label: 'ВСЕ', size: 17),
                   ),
                 ),
               ],
