@@ -5,6 +5,7 @@ import 'package:dreamjob/level_5.dart';
 import 'package:dreamjob/level_6.dart';
 import 'package:dreamjob/level_7.dart';
 import 'package:dreamjob/level_8.dart';
+import 'package:dreamjob/level_8_1.dart';
 import 'package:dreamjob/level_9.dart';
 import 'package:dreamjob/level_10.dart';
 import 'package:dreamjob/level_11.dart';
@@ -38,6 +39,7 @@ class GameLevelController with ChangeNotifier {
     Level6(),
     Level7(),
     Level8(),
+    Level81(),
     Level9(),
     Level10(),
     Level11(),

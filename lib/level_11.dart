@@ -12,7 +12,7 @@ class Level11 extends StatefulWidget {
 }
 
 class _Level11State extends State<Level11> {
- late final GameLevelController _gameLevelController = GameScope.of(context).gameLevelController;
+  late final GameLevelController _gameLevelController = GameScope.of(context).gameLevelController;
 
   @override
   Widget build(BuildContext context) {
@@ -25,27 +25,18 @@ class _Level11State extends State<Level11> {
             width: MediaQuery.of(context).size.width / 1.5,
             child: Padding(
               padding: const EdgeInsets.all(32.0),
-              child: Column(
-                children: [
-                  TextWidget(label: "ПОЗДРАВЛЯЕМ!", size: 40),
-                  const SizedBox(height: 50),
-                  TextWidget(label: "ВЫ ПРОШЛИ ТЕСТИРОВАНИЕ КОМПАНИИ МЕЧТЫ", size: 25),
-                  const SizedBox(height: 50),
-                  TextWidget(label: "НАЖМИТЕ НА ЭКРАН, ЧТОБЫ ЗАВЕРШИТЬ ИГРУ", size: 20),
-                ],
-              ),
+              child: Column(children: [TextWidget(label: "РЕЗУЛЬТАТ ОБРАБАТЫВАЕТСЯ", size: 30)]),
             ),
           ),
-          const SizedBox(height: 200),
+          const SizedBox(height: 100),
           GestureDetector(
             onTap: () {
-              // Reset the game or return to main menu
-              _gameLevelController.resetScore();
+              _gameLevelController.nextLevel();
             },
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(color: Colors.transparent),
-              child: TextWidget(label: 'ЗАВЕРШИТЬ ИГРУ', size: 17),
+              child: TextWidget(label: 'ПРОДОЛЖИТЬ', size: 17),
             ),
           ),
         ],

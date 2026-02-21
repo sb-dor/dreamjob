@@ -25,13 +25,10 @@ class _Level2State extends State<Level2> with SingleTickerProviderStateMixin {
       vsync: this,
     )..repeat(reverse: true);
 
-
-    _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeInOut,
-      ),
-    );
+    _opacityAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _animationController, curve: Curves.easeInOut));
   }
 
   @override
@@ -52,7 +49,8 @@ class _Level2State extends State<Level2> with SingleTickerProviderStateMixin {
             child: Padding(
               padding: const EdgeInsets.all(32.0),
               child: TextWidget(
-                label: "ДЛЯ ПРОХОЖДЕНИЯ ТЕСТИРОВАНИЯ ВАМ МОЖЕТ ПОНАДОБИТЬСЯ УСТРОЙСТВО ВЫВОДА ЗВУКА",
+                label:
+                    "ДЛЯ ПРОХОЖДЕНИЯ ТЕСТИРОВАНИЯ ВАМ МОЖЕТ ПОНАДОБИТЬСЯ УСТРОЙСТВО ВЫВОДА ЗВУКА",
                 size: 25,
               ),
             ),
@@ -66,16 +64,8 @@ class _Level2State extends State<Level2> with SingleTickerProviderStateMixin {
                   mainAxisAlignment: MainAxisAlignment.center,
                   spacing: 20,
                   children: [
-                    Icon(
-                      Icons.headphones,
-                      size: 100,
-                      color: Colors.black,
-                    ),
-                    Icon(
-                      Icons.speaker,
-                      size: 100,
-                      color: Colors.black,
-                    ),
+                    Icon(Icons.headphones, size: 100, color: Colors.black),
+                    Icon(Icons.speaker, size: 100, color: Colors.black),
                   ],
                 ),
               );

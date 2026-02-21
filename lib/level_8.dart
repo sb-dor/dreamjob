@@ -29,7 +29,7 @@ class _Level8State extends State<Level8> {
                 children: [
                   TextWidget(label: "ВОПРОС 3/5", size: 30),
                   const SizedBox(height: 50),
-                  TextWidget(label: "ВСЕ ЧАСТНИКИ - ЮРИСТЫ. НЕКОТОРЫЕ ЮРИСТЫ - АДВОКАТЫ. СЛЕДОВАТЕЛЬНО:", size: 20),
+                  TextWidget(label: "ВЫБЕРИТЕ ЛИШНЕЕ", size: 20),
                 ],
               ),
             ),
@@ -49,7 +49,7 @@ class _Level8State extends State<Level8> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: 'ВСЕ АДВОКАТЫ - ЧАСТНИКИ', size: 17),
+                    child: TextWidget(label: 'КРОКОДИЛ', size: 17),
                   ),
                 ),
                 GestureDetector(
@@ -60,7 +60,7 @@ class _Level8State extends State<Level8> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: 'ВСЕ ЧАСТНИКИ - АДВОКАТЫ', size: 17),
+                    child: TextWidget(label: 'КОШКА', size: 17),
                   ),
                 ),
               ],
@@ -81,7 +81,7 @@ class _Level8State extends State<Level8> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: 'НЕКОТОРЫЕ ЮРИСТЫ - ЧАСТНИКИ', size: 17),
+                    child: TextWidget(label: 'ОСЕЛ', size: 17),
                   ),
                 ),
                 GestureDetector(
@@ -92,7 +92,7 @@ class _Level8State extends State<Level8> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: 'НИ ОДИН ЧАСТНИК НЕ ЯВЛЯЕТСЯ АДВОКАТОМ', size: 17),
+                    child: TextWidget(label: 'СОБАКА', size: 17),
                   ),
                 ),
               ],

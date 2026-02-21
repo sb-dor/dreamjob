@@ -29,7 +29,7 @@ class _Level10State extends State<Level10> {
                 children: [
                   TextWidget(label: "ВОПРОС 5/5", size: 30),
                   const SizedBox(height: 50),
-                  TextWidget(label: "СКОЛЬКО МЕСЯЦЕВ В ГОДУ ИМЕЮТ 28 ДНЕЙ?", size: 20),
+                  TextWidget(label: "ВЫБЕРИТЕ ЛИШНЕЕ", size: 20),
                 ],
               ),
             ),
@@ -49,7 +49,7 @@ class _Level10State extends State<Level10> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '1', size: 17),
+                    child: TextWidget(label: 'РАБОТА', size: 17),
                   ),
                 ),
                 GestureDetector(
@@ -60,7 +60,7 @@ class _Level10State extends State<Level10> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '6', size: 17),
+                    child: TextWidget(label: 'НАЧАЛЬНИК', size: 17),
                   ),
                 ),
               ],
@@ -81,7 +81,7 @@ class _Level10State extends State<Level10> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '12', size: 17),
+                    child: TextWidget(label: 'КОМПАНИЯ', size: 17),
                   ),
                 ),
                 GestureDetector(
@@ -92,7 +92,7 @@ class _Level10State extends State<Level10> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: 'ВСЕ', size: 17),
+                    child: TextWidget(label: 'СЕМЬЯ', size: 17),
                   ),
                 ),
               ],

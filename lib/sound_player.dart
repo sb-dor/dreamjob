@@ -13,7 +13,7 @@ class SoundPlayer {
 
   // Вызывай эту функцию, когда нужно проиграть звук
   Future<void> play() async {
-    await _player.setVolume(1.0); // Volume должен быть от 0.0 до 1.0
+    await _player.setVolume(0.7); // Volume должен быть от 0.0 до 1.0
     await _player.seek(Duration.zero); // Начать с начала
     await _player.play();
     // wait until the sound has completed
@@ -28,7 +28,7 @@ class SoundPlayer {
 
   // Если хочешь зациклить навсегда
   Future<void> playLoop() async {
-    await _player.setVolume(3);
+    await _player.setVolume(0.7);
     await _player.setLoopMode(LoopMode.one); // зациклит этот трек
     await _player.play();
   }

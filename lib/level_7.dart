@@ -29,7 +29,10 @@ class _Level7State extends State<Level7> {
                 children: [
                   TextWidget(label: "ВОПРОС 2/5", size: 30),
                   const SizedBox(height: 50),
-                  TextWidget(label: "ЕСЛИ ВСЕ КОТЫ СЕРОГО ЦВЕТА, ТО ЖИВОТНОЕ СЕРОГО ЦВЕТА - ЭТО КОТ?", size: 20),
+                  TextWidget(
+                    label: "ЕСЛИ ВСЕ КОТЫ СЕРОГО ЦВЕТА, ТО ЖИВОТНОЕ СЕРОГО ЦВЕТА - ЭТО КОТ?",
+                    size: 20,
+                  ),
                 ],
               ),
             ),

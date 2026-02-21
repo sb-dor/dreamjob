@@ -1,6 +1,5 @@
 import 'package:dreamjob/game_level_controller.dart';
 import 'package:dreamjob/main.dart';
-import 'package:dreamjob/sound_player.dart';
 import 'package:dreamjob/text_widget.dart';
 import 'package:flutter/material.dart';
 

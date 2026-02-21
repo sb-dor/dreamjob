@@ -6,5 +6,5 @@ class Assets {
   static const String shadersCrtDistortion = 'assets/shaders/crt_distortion.frag';
   static const String sounds60VhsCasetteOut86997 = 'assets/sounds/60_vhs_casette_out-86997.mp3';
   static const String soundsVhsNoise = 'assets/sounds/vhs-noise.mp3';
-
+  static const String crocodileGena = 'assets/images/crocodile_gena.png';
 }

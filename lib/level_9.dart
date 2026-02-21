@@ -29,7 +29,7 @@ class _Level9State extends State<Level9> {
                 children: [
                   TextWidget(label: "ВОПРОС 4/5", size: 30),
                   const SizedBox(height: 50),
-                  TextWidget(label: "ЕСЛИ ЗАВТРА БУДЕТ ПОСЛЕ ВЧЕРА, ТО СЕГОДНЯШНИЙ ДЕНЬ - ЭТО:", size: 20),
+                  TextWidget(label: "ВЫБЕРИТЕ ЛИШНЕЕ", size: 20),
                 ],
               ),
             ),
@@ -49,7 +49,7 @@ class _Level9State extends State<Level9> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: 'ПОНЕДЕЛЬНИК', size: 17),
+                    child: TextWidget(label: 'ГЕЛИЙ', size: 17),
                   ),
                 ),
                 GestureDetector(
@@ -60,7 +60,7 @@ class _Level9State extends State<Level9> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: 'ВТОРНИК', size: 17),
+                    child: TextWidget(label: 'ЖЕЛЕЗО', size: 17),
                   ),
                 ),
               ],
@@ -81,7 +81,7 @@ class _Level9State extends State<Level9> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: 'СЕРЕДИНА НЕДЕЛИ', size: 17),
+                    child: TextWidget(label: 'КИСЛОРОД', size: 17),
                   ),
                 ),
                 GestureDetector(
@@ -92,7 +92,7 @@ class _Level9State extends State<Level9> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: 'ПЯТНИЦА', size: 17),
+                    child: TextWidget(label: 'ВОДОРОД', size: 17),
                   ),
                 ),
               ],
