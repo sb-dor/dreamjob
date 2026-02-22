@@ -5,20 +5,20 @@ import 'package:flutter/material.dart';
 import 'game_level_controller.dart';
 import 'main.dart';
 
-class Level81 extends StatefulWidget {
-  const Level81({super.key});
+class Level141 extends StatefulWidget {
+  const Level141({super.key});
 
   @override
-  State<Level81> createState() => _Level81State();
+  State<Level141> createState() => _Level141State();
 }
 
-class _Level81State extends State<Level81> {
+class _Level141State extends State<Level141> {
   late final GameLevelController _gameLevelController = GameScope.of(context).gameLevelController;
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       _gameLevelController.nextLevel();
     });
   }
@@ -27,7 +27,7 @@ class _Level81State extends State<Level81> {
   Widget build(BuildContext context) {
     return SizedBox.expand(
       child: VhsOverlayPainter(
-        background: Image.asset(fit: BoxFit.cover, Assets.imagesCrocodileGena),
+        background: Image.asset(fit: BoxFit.cover, Assets.imagesBurningHouse),
       ),
     );
   }

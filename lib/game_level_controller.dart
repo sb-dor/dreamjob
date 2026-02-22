@@ -1,19 +1,24 @@
-import 'package:dreamjob/level_1.dart';
-import 'package:dreamjob/level_3.dart';
-import 'package:dreamjob/level_4.dart';
-import 'package:dreamjob/level_5.dart';
-import 'package:dreamjob/level_6.dart';
-import 'package:dreamjob/level_7.dart';
-import 'package:dreamjob/level_8.dart';
-import 'package:dreamjob/level_8_1.dart';
-import 'package:dreamjob/level_9.dart';
-import 'package:dreamjob/level_10.dart';
-import 'package:dreamjob/level_11.dart';
+import 'package:dreamjob/level_14.dart';
+import 'package:dreamjob/level_14_1.dart';
+import 'package:dreamjob/level_15.dart';
 import 'package:dreamjob/score_screen.dart';
 import 'package:dreamjob/sound_player.dart';
 import 'package:flutter/material.dart';
 
+import 'level_1.dart';
+import 'level_10.dart';
+import 'level_11.dart';
+import 'level_12.dart';
+import 'level_13.dart';
 import 'level_2.dart';
+import 'level_3.dart';
+import 'level_4.dart';
+import 'level_5.dart';
+import 'level_6.dart';
+import 'level_7.dart';
+import 'level_8.dart';
+import 'level_8_1.dart';
+import 'level_9.dart';
 
 class GameLevelController with ChangeNotifier {
   late final SoundPlayer _soundPlayer;
@@ -43,6 +48,11 @@ class GameLevelController with ChangeNotifier {
     Level9(),
     Level10(),
     Level11(),
+    Level12(),
+    Level13(),
+    Level14(),
+    Level141(),
+    Level15(),
   ];
 
   int get score => _score;

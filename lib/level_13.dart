@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'game_level_controller.dart';
 import 'main.dart';
 
-class Level7 extends StatefulWidget {
-  const Level7({super.key});
+class Level13 extends StatefulWidget {
+  const Level13({super.key});
 
   @override
-  State<Level7> createState() => _Level7State();
+  State<Level13> createState() => _Level13State();
 }
 
-class _Level7State extends State<Level7> {
+class _Level13State extends State<Level13> {
   late final GameLevelController _gameLevelController = GameScope.of(context).gameLevelController;
 
   @override
@@ -27,9 +27,12 @@ class _Level7State extends State<Level7> {
               padding: const EdgeInsets.all(32.0),
               child: Column(
                 children: [
-                  TextWidget(label: "ВОПРОС 2/5", size: 30),
+                  TextWidget(label: "ВОПРОС 1/5", size: 30),
                   const SizedBox(height: 50),
-                  TextWidget(label: "2 . . 4 . . 6 . . 8 . . ?", size: 25),
+                  TextWidget(
+                    label: "У КОМПАНИИ ВОЗНИКЛА ПРОБЛЕМА. ВАС ПРОСЯТ РАБОТАТЬ В ВЫХОДНЫЕ БЕСПЛАТНО",
+                    size: 25,
+                  ),
                 ],
               ),
             ),
@@ -49,7 +52,7 @@ class _Level7State extends State<Level7> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '13', size: 17),
+                    child: TextWidget(label: 'СОГЛАСИТЬСЯ', size: 17),
                   ),
                 ),
                 GestureDetector(
@@ -60,39 +63,7 @@ class _Level7State extends State<Level7> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '10', size: 17),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 50),
-          SizedBox(
-            width: MediaQuery.of(context).size.width / 1.5,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    _gameLevelController.addToScore(-1); // Wrong answer
-                    _gameLevelController.nextLevel();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '40', size: 17),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    _gameLevelController.addToScore(2); // Correct answer
-                    _gameLevelController.nextLevel();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '32', size: 17),
+                    child: TextWidget(label: 'ОТКАЗАТЬСЯ', size: 17),
                   ),
                 ),
               ],
