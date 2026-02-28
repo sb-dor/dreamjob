@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'game_level_controller.dart';
 import 'main.dart';
 
-class Level13 extends StatefulWidget {
-  const Level13({super.key});
+class Level17 extends StatefulWidget {
+  const Level17({super.key});
 
   @override
-  State<Level13> createState() => _Level13State();
+  State<Level17> createState() => _Level17State();
 }
 
-class _Level13State extends State<Level13> {
+class _Level17State extends State<Level17> {
   late final GameLevelController _gameLevelController = GameScope.of(context).gameLevelController;
 
   @override
@@ -27,10 +27,10 @@ class _Level13State extends State<Level13> {
               padding: const EdgeInsets.all(32.0),
               child: Column(
                 children: [
-                  TextWidget(label: "ВОПРОС 1/5", size: 30),
+                  TextWidget(label: "ВОПРОС 5/5", size: 30),
                   const SizedBox(height: 50),
                   TextWidget(
-                    label: "У КОМПАНИИ ВОЗНИКЛА ПРОБЛЕМА. ВАС ПРОСЯТ РАБОТАТЬ В ВЫХОДНЫЕ БЕСПЛАТНО",
+                    label: "ВЫ ПОПАЛИ В АВТОМОБИЛЬНУЮ АВАРИЮ И СЛОМАЛИ НЕСКОЛЬКО КОСТЕЙ",
                     size: 25,
                   ),
                 ],
@@ -53,7 +53,7 @@ class _Level13State extends State<Level13> {
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       decoration: BoxDecoration(color: Colors.transparent),
-                      child: TextWidget(label: 'СОГЛАСИТЬСЯ', size: 17),
+                      child: TextWidget(label: 'ПРЕДУПРЕДИТЬ НАЧАЛЬСТВО', size: 17),
                     ),
                   ),
                 ),
@@ -66,7 +66,10 @@ class _Level13State extends State<Level13> {
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       decoration: BoxDecoration(color: Colors.transparent),
-                      child: TextWidget(label: 'ОТКАЗАТЬСЯ', size: 17),
+                      child: TextWidget(
+                        label: 'УВОЛИТЬСЯ ЧТОБЫ КОМПАНИЯ НЕ ТЕРЯЛА ЭФФЕКТИВНОСТЬ',
+                        size: 17,
+                      ),
                     ),
                   ),
                 ),

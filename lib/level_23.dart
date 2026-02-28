@@ -1,17 +1,18 @@
 import 'package:dreamjob/text_widget.dart';
+import 'package:dreamjob/widget_screamer.dart';
 import 'package:flutter/material.dart';
 
 import 'game_level_controller.dart';
 import 'main.dart';
 
-class Level13 extends StatefulWidget {
-  const Level13({super.key});
+class Level23 extends StatefulWidget {
+  const Level23({super.key});
 
   @override
-  State<Level13> createState() => _Level13State();
+  State<Level23> createState() => _Level23State();
 }
 
-class _Level13State extends State<Level13> {
+class _Level23State extends State<Level23> {
   late final GameLevelController _gameLevelController = GameScope.of(context).gameLevelController;
 
   @override
@@ -27,12 +28,9 @@ class _Level13State extends State<Level13> {
               padding: const EdgeInsets.all(32.0),
               child: Column(
                 children: [
-                  TextWidget(label: "ВОПРОС 1/5", size: 30),
+                  TextWidget(label: "ВОПРОС 5/5", size: 30),
                   const SizedBox(height: 50),
-                  TextWidget(
-                    label: "У КОМПАНИИ ВОЗНИКЛА ПРОБЛЕМА. ВАС ПРОСЯТ РАБОТАТЬ В ВЫХОДНЫЕ БЕСПЛАТНО",
-                    size: 25,
-                  ),
+                  TextWidget(label: "ВАМ ВАЖНА ВАША ВНЕШНОСТЬ? ВЫ БОИТЕСЬ ИЗМЕНИТЬСЯ", size: 25),
                 ],
               ),
             ),
@@ -47,26 +45,29 @@ class _Level13State extends State<Level13> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      _gameLevelController.addToScore(-1); // Wrong answer
                       _gameLevelController.nextLevel();
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       decoration: BoxDecoration(color: Colors.transparent),
-                      child: TextWidget(label: 'СОГЛАСИТЬСЯ', size: 17),
+                      child: TextWidget(label: 'ДА', size: 17),
                     ),
                   ),
                 ),
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      _gameLevelController.addToScore(-1); // Wrong answer
-                      _gameLevelController.nextLevel();
+                      // Show the WidgetScreamer with the freak_1 image
+                      WidgetScreamer.show(
+                        context,
+                        asset: 'assets/images/freak_1.jpg',
+                        duration: Duration(milliseconds: 500),
+                      );
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       decoration: BoxDecoration(color: Colors.transparent),
-                      child: TextWidget(label: 'ОТКАЗАТЬСЯ', size: 17),
+                      child: TextWidget(label: 'НЕТ', size: 17),
                     ),
                   ),
                 ),

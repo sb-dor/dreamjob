@@ -1,6 +1,16 @@
+import 'package:dreamjob/level_16.dart';
 import 'package:dreamjob/level_14.dart';
 import 'package:dreamjob/level_14_1.dart';
 import 'package:dreamjob/level_15.dart';
+import 'package:dreamjob/level_17.dart';
+import 'package:dreamjob/level_18.dart';
+import 'package:dreamjob/level_19.dart';
+import 'package:dreamjob/level_19_1.dart';
+import 'package:dreamjob/level_20.dart';
+import 'package:dreamjob/level_21.dart';
+import 'package:dreamjob/level_21_1.dart';
+import 'package:dreamjob/level_22.dart';
+import 'package:dreamjob/level_23.dart';
 import 'package:dreamjob/score_screen.dart';
 import 'package:dreamjob/sound_player.dart';
 import 'package:flutter/material.dart';
@@ -36,23 +46,35 @@ class GameLevelController with ChangeNotifier {
   }
 
   final List<Widget> _levels = [
-    Level1(),
-    Level2(),
-    Level3(),
-    Level4(),
-    Level5(),
-    Level6(),
-    Level7(),
-    Level8(),
-    Level81(),
-    Level9(),
-    Level10(),
+    // Level1(),
+    // Level2(),
+    // Level3(),
+    // Level4(),
+    // Level5(),
+    // Level6(),
+    // Level7(),
+    // Level8(),
+    // Level81(),
+    // Level9(),
+    // Level10(),
+    // Level11(),
+    // Level12(),
+    // Level13(),
+    // Level14(),
+    // Level141(),
+    // Level15(),
+    // Level16(),
+    // Level17(),
+    // Level11(),
+    // Level18(),
+    // Level19(),
+    // Level191(),
+    // Level20(),
+    Level21(),
+    Level211(),
+    Level22(),
+    Level23(),
     Level11(),
-    Level12(),
-    Level13(),
-    Level14(),
-    Level141(),
-    Level15(),
   ];
 
   int get score => _score;
@@ -64,7 +86,7 @@ class GameLevelController with ChangeNotifier {
     notifyListeners();
   }
 
-  void nextLevel() async {
+  void nextLevel({final bool playSound = true}) async {
     if (_currentLevelIndex + 1 >= _levels.length) return;
     if (_loadingNextLevel) return;
 
@@ -72,7 +94,7 @@ class GameLevelController with ChangeNotifier {
 
     try {
       await Future.delayed(const Duration(milliseconds: 500));
-      await _soundPlayer.play();
+      if (playSound) await _soundPlayer.play();
 
       // Check if we should show a score screen based on score threshold
       // For example, show score screen if score is greater than 5

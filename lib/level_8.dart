@@ -41,26 +41,30 @@ class _Level8State extends State<Level8> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    _gameLevelController.addToScore(-1); // Wrong answer
-                    _gameLevelController.nextLevel();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: 'КРОКОДИЛ', size: 17),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      _gameLevelController.addToScore(-1); // Wrong answer
+                      _gameLevelController.nextLevel();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(color: Colors.transparent),
+                      child: TextWidget(label: 'КРОКОДИЛ', size: 17),
+                    ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    _gameLevelController.addToScore(-1); // Wrong answer
-                    _gameLevelController.nextLevel();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: 'КОШКА', size: 17),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      _gameLevelController.addToScore(-1); // Wrong answer
+                      _gameLevelController.nextLevel();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(color: Colors.transparent),
+                      child: TextWidget(label: 'КОШКА', size: 17),
+                    ),
                   ),
                 ),
               ],
@@ -73,26 +77,30 @@ class _Level8State extends State<Level8> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    _gameLevelController.addToScore(2); // Correct answer
-                    _gameLevelController.nextLevel();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: 'ОСЕЛ', size: 17),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      _gameLevelController.addToScore(2); // Correct answer
+                      _gameLevelController.nextLevel();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(color: Colors.transparent),
+                      child: TextWidget(label: 'ОСЕЛ', size: 17),
+                    ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    _gameLevelController.addToScore(-1); // Wrong answer
-                    _gameLevelController.nextLevel();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: 'СОБАКА', size: 17),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      _gameLevelController.addToScore(-1); // Wrong answer
+                      _gameLevelController.nextLevel();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(color: Colors.transparent),
+                      child: TextWidget(label: 'СОБАКА', size: 17),
+                    ),
                   ),
                 ),
               ],

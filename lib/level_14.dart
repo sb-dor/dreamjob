@@ -44,26 +44,30 @@ class _Level14State extends State<Level14> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    _gameLevelController.addToScore(-1); // Wrong answer
-                    _gameLevelController.nextLevel();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: 'ПРОДОЛЖИТЬ РАБОТАТЬ', size: 17),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      _gameLevelController.addToScore(-1); // Wrong answer
+                      _gameLevelController.nextLevel();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(color: Colors.transparent),
+                      child: TextWidget(label: 'ПРОДОЛЖИТЬ РАБОТАТЬ', size: 17),
+                    ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    _gameLevelController.addToScore(-1); // Wrong answer
-                    _gameLevelController.nextLevel();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: 'ПОКИНУТЬ РАБОЧЕЕ МЕСТО', size: 17),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      _gameLevelController.addToScore(-1); // Wrong answer
+                      _gameLevelController.nextLevel();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(color: Colors.transparent),
+                      child: TextWidget(label: 'ПОКИНУТЬ РАБОЧЕЕ МЕСТО', size: 17),
+                    ),
                   ),
                 ),
               ],

@@ -5,6 +5,9 @@ class Assets {
   static const String imagesBackground = 'assets/images/background.png';
   static const String imagesBurningHouse = 'assets/images/burning_house.png';
   static const String imagesCrocodileGena = 'assets/images/crocodile_gena.png';
+  static const String imagesFreak1 = 'assets/images/freak_1.jpg';
+  static const String imagesGraveyard = 'assets/images/graveyard.png';
+  static const String imagesRottenMeat = 'assets/images/rotten_meat.png';
   static const String shadersCrtDistortion = 'assets/shaders/crt_distortion.frag';
   static const String sounds60VhsCasetteOut86997 = 'assets/sounds/60_vhs_casette_out-86997.mp3';
   static const String soundsCassetteEngagement = 'assets/sounds/cassette_engagement.mp3';

@@ -41,26 +41,30 @@ class _Level7State extends State<Level7> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    _gameLevelController.addToScore(-1); // Wrong answer
-                    _gameLevelController.nextLevel();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '13', size: 17),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      _gameLevelController.addToScore(-1); // Wrong answer
+                      _gameLevelController.nextLevel();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(color: Colors.transparent),
+                      child: TextWidget(label: '13', size: 17),
+                    ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    _gameLevelController.addToScore(-1); // Wrong answer
-                    _gameLevelController.nextLevel();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '10', size: 17),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      _gameLevelController.addToScore(-1); // Wrong answer
+                      _gameLevelController.nextLevel();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(color: Colors.transparent),
+                      child: TextWidget(label: '10', size: 17),
+                    ),
                   ),
                 ),
               ],
@@ -73,26 +77,30 @@ class _Level7State extends State<Level7> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    _gameLevelController.addToScore(-1); // Wrong answer
-                    _gameLevelController.nextLevel();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '40', size: 17),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      _gameLevelController.addToScore(-1); // Wrong answer
+                      _gameLevelController.nextLevel();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(color: Colors.transparent),
+                      child: TextWidget(label: '40', size: 17),
+                    ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    _gameLevelController.addToScore(2); // Correct answer
-                    _gameLevelController.nextLevel();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(color: Colors.transparent),
-                    child: TextWidget(label: '32', size: 17),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      _gameLevelController.addToScore(2); // Correct answer
+                      _gameLevelController.nextLevel();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(color: Colors.transparent),
+                      child: TextWidget(label: '32', size: 17),
+                    ),
                   ),
                 ),
               ],

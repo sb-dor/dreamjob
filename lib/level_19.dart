@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'game_level_controller.dart';
 import 'main.dart';
 
-class Level13 extends StatefulWidget {
-  const Level13({super.key});
+class Level19 extends StatefulWidget {
+  const Level19({super.key});
 
   @override
-  State<Level13> createState() => _Level13State();
+  State<Level19> createState() => _Level19State();
 }
 
-class _Level13State extends State<Level13> {
+class _Level19State extends State<Level19> {
   late final GameLevelController _gameLevelController = GameScope.of(context).gameLevelController;
 
   @override
@@ -29,10 +29,7 @@ class _Level13State extends State<Level13> {
                 children: [
                   TextWidget(label: "ВОПРОС 1/5", size: 30),
                   const SizedBox(height: 50),
-                  TextWidget(
-                    label: "У КОМПАНИИ ВОЗНИКЛА ПРОБЛЕМА. ВАС ПРОСЯТ РАБОТАТЬ В ВЫХОДНЫЕ БЕСПЛАТНО",
-                    size: 25,
-                  ),
+                  TextWidget(label: "В НАШЕЙ СТОЛОВОЙ ГОТОВЯТ МЯСО. ВЫ ЛЮБИТЕ МЯСО?", size: 25),
                 ],
               ),
             ),
@@ -47,26 +44,24 @@ class _Level13State extends State<Level13> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      _gameLevelController.addToScore(-1); // Wrong answer
                       _gameLevelController.nextLevel();
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       decoration: BoxDecoration(color: Colors.transparent),
-                      child: TextWidget(label: 'СОГЛАСИТЬСЯ', size: 17),
+                      child: TextWidget(label: 'ДА', size: 17),
                     ),
                   ),
                 ),
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      _gameLevelController.addToScore(-1); // Wrong answer
                       _gameLevelController.nextLevel();
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       decoration: BoxDecoration(color: Colors.transparent),
-                      child: TextWidget(label: 'ОТКАЗАТЬСЯ', size: 17),
+                      child: TextWidget(label: 'НЕТ', size: 17),
                     ),
                   ),
                 ),
