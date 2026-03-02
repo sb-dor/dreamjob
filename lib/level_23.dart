@@ -45,7 +45,11 @@ class _Level23State extends State<Level23> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      _gameLevelController.nextLevel();
+                      WidgetScreamer.show(
+                        context,
+                        asset: 'assets/images/freak_1.jpg',
+                        duration: Duration(milliseconds: 500),
+                      );
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
